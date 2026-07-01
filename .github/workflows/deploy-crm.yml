@@ -1,0 +1,62 @@
+name: Deploy CRM
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Check formatting
+        run: npm run format:check
+
+      - name: Create .env
+        run: |
+          cat > .env <<EOF
+          API_URL=${{ secrets.API_URL }}
+          PORT=${{ secrets.PORT }}
+          EOF
+
+      - name: Build
+        run: npm run build
+
+      - name: Install rar and sshpass
+        run: sudo apt-get install -y rar sshpass
+
+      - name: Create archive
+        run: rar a -r crm-deploy.rar .output
+
+      - name: Upload archive to server
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" scp \
+            -o StrictHostKeyChecking=no \
+            crm-deploy.rar \
+            root@${{ secrets.SSH_HOST }}:/var/www/prostor.proskurin.site/crm/
+
+      - name: Deploy on server
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh \
+            -o StrictHostKeyChecking=no \
+            root@${{ secrets.SSH_HOST }} \
+            "cd /var/www/prostor.proskurin.site/crm && \
+             rm -rf .output && \
+             unrar x crm-deploy.rar && \
+             rm -f crm-deploy.rar && \
+             pm2 restart prostor-crm"

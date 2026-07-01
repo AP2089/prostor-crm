@@ -1,0 +1,80 @@
+{
+  "brand": "Простор",
+  "nav": {
+    "dashboard": "Панель управления",
+    "orders": "Заказы",
+    "messages": "Сообщения",
+    "logout": "Выйти"
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "total": "Всего заказов",
+    "new": "Новые",
+    "paid": "Оплачено",
+    "delivery": "В доставке",
+    "cancelled": "Отменено",
+    "revenue": "Выручка"
+  },
+  "messages": {
+    "title": "Сообщения",
+    "customer": "Клиент",
+    "email": "Email",
+    "message": "Сообщение",
+    "date": "Дата",
+    "actions": "Действия",
+    "delete": "Удалить",
+    "detailsTitle": "Сообщение от {name}",
+    "name": "Имя",
+    "phone": "Телефон",
+    "confirmDelete": "Удалить это сообщение?",
+    "cancel": "Отмена",
+    "close": "Закрыть",
+    "empty": "Сообщений пока нет"
+  },
+  "orders": {
+    "title": "Заказы",
+    "number": "№ заказа",
+    "customer": "Клиент",
+    "items": "Товары",
+    "total": "Сумма",
+    "status": "Статус",
+    "date": "Дата",
+    "actions": "Действия",
+    "markPaid": "Оплачен",
+    "delete": "Удалить",
+    "deleteDetails": "Подробнее",
+    "detailsTitle": "Заказ {number}",
+    "name": "Имя",
+    "phone": "Телефон",
+    "email": "Email",
+    "delivery": "Доставка",
+    "address": "Адрес",
+    "comment": "Комментарий",
+    "close": "Закрыть",
+    "confirmDelete": "Удалить этот заказ?",
+    "cancel": "Отмена",
+    "empty": "Заказов пока нет"
+  },
+  "status": {
+    "new": "Новый",
+    "paid": "Оплачен",
+    "delivery": "В доставке",
+    "cancelled": "Отменён"
+  },
+  "login": {
+    "title": "Вход в CRM",
+    "username": "Логин",
+    "password": "Пароль",
+    "submit": "Войти",
+    "error": "Неверный логин или пароль",
+    "required": "Обязательное поле"
+  },
+  "validation": {
+    "required": "Обязательное поле"
+  },
+  "errors": {
+    "orderStatus": "Не удалось изменить статус заказа",
+    "orderDelete": "Не удалось удалить заказ",
+    "messageDelete": "Не удалось удалить сообщение"
+  }
+}
